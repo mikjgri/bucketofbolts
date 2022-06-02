@@ -6,7 +6,7 @@ function cleanup {
     pkill -P $$
     wait
 }
-trap finish EXIT
+trap cleanup EXIT
 
 
 kubectl port-forward -n a-namespace service/a-service 7000:80 &
