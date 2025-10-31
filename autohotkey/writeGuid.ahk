@@ -1,15 +1,13 @@
-SendGuid(lowerCase)
-{
-    TypeLib := ComObjCreate("Scriptlet.TypeLib")
+#Requires AutoHotkey v2.0
+
+SendGuid(lowerCase) {
+    TypeLib := ComObject("Scriptlet.TypeLib")
     NewGUID := TypeLib.Guid
     NewGUID := SubStr(NewGUID, 2, 36)
-    if lowerCase
-        StringLower, NewGUID, NewGUID
-    Send, %NewGUID%
+    if (lowerCase)
+        NewGUID := StrLower(NewGUID)
+    Send(NewGUID)
 }
-!g::
-    SendGuid(true)
-return
-!+g::
-    SendGuid(false)
-return
+
+!g::SendGuid(true)
+!+g::SendGuid(false)
