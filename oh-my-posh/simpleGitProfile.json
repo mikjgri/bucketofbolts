@@ -1,0 +1,36 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "style": "full"
+          },
+          "template": "{{ .Path }}",
+          "type": "path",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "branch_icon": "\ue0a0",
+            "branch_max_length": 64,
+            "display_stash_count": true,
+            "display_status": true,
+            "display_upstream_arrows": true,
+            "display_upstream_icon": false,
+            "fetch_status": true
+          },
+          "template": " {{ .HEAD }}{{ if or (gt .Ahead 0) (gt .Behind 0) }} <#90CAF9>{{ if gt .Ahead 0 }}\u21e1{{ .Ahead }}{{ end }}{{ if gt .Behind 0 }}\u21e3{{ .Behind }}{{ end }}</>{{ end }}{{ if gt .Staging.Added 0 }} <#4CAF50>+{{ .Staging.Added }}</>{{ end }}{{ if gt .Staging.Modified 0 }} <#FFC107>~{{ .Staging.Modified }}</>{{ end }}{{ if gt .Staging.Deleted 0 }} <#F44336>-{{ .Staging.Deleted }}</>{{ end }}{{ if gt .Working.Modified 0 }} <#FFB300>*{{ .Working.Modified }}</>{{ end }}{{ if gt .Working.Deleted 0 }} <#E53935>x{{ .Working.Deleted }}</>{{ end }}{{ if gt .Working.Untracked 0 }} <#9E9E9E>?{{ .Working.Untracked }}</>{{ end }}{{ if or (gt .Staging.Unmerged 0) (gt .Working.Unmerged 0) }} <#E91E63>!{{ add .Staging.Unmerged .Working.Unmerged }}</>{{ end }}{{ if gt .StashCount 0 }} <#26C6DA>\u2261{{ .StashCount }}</>{{ end }}",
+          "foreground": "#8BC34A",
+          "type": "git",
+          "style": "plain"
+        }
+      ]
+    }
+  ],
+  "version": 3,
+  "final_space": true
+}
